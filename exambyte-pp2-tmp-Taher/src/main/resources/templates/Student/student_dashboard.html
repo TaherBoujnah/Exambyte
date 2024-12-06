@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/StyleSheet.css">
+</head>
+<body>
+<div class="navbar">
+    <a href="/student_dashboard">Dashboard</a>
+    <a href="/old_exams">Old Exams</a>
+    <a href="/available_exams">Available Exams </a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="dashboard-container">
+    <h1>Welcome to Your Dashboard, <span th:text="${name}"> </span> </h1>
+    <p>Role: Student</p>
+
+</div>
+<div class="cards-container">
+    <div class="card">
+        <h2>Available Exams</h2>
+        <p>Check and participate in ongoing exams.</p>
+        <a href="/available_exams" class="button">View Available Exams</a>
+    </div>
+
+<div class="card">
+    <h2>Old Exams</h2>
+    <p>Review your completed exams and scores.</p>
+    <a href="/old_exams" class="button">View Old Exams</a>
+</div>
+
+<div class="card">
+    <h2>Logout</h2>
+    <p>Log out from your account securely.</p>
+    <a href="/logout" class="button">Logout</a>
+</div>
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
+
