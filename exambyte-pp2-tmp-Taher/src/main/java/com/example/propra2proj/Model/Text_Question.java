@@ -1,14 +1,14 @@
-package com.example.propra2proj;
+package com.example.propra2proj.Model;
 
-public class Text_Question implements Question{
+public class Text_Question implements Question {
 
     private String question;
-    private String PotentialAnswer;
+    private String potentialAnswer;
     private int Score;
 
-    public Text_Question(String question, String PotentialAnswer, int Score) {
+    public Text_Question(String question, String potentialAnswer, int Score) {
         this.question = question;
-        this.PotentialAnswer = PotentialAnswer;
+        this.potentialAnswer = potentialAnswer;
         this.Score = Score;
     }
 
@@ -19,7 +19,7 @@ public class Text_Question implements Question{
 
     @Override
     public String getAnswer() {
-        return this.PotentialAnswer;
+        return this.potentialAnswer;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Text_Question implements Question{
 
     @Override
     public void setAnswer(String answer) {
-        this.PotentialAnswer = answer;
+        this.potentialAnswer = answer;
 
     }
 

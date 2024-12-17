@@ -1,4 +1,4 @@
-package com.example.propra2proj;
+package com.example.propra2proj.Model;
 
 public interface Question {
     String getQuestion();

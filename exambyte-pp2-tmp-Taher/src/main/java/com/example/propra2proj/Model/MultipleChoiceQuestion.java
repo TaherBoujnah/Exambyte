@@ -1,4 +1,4 @@
-package com.example.propra2proj;
+package com.example.propra2proj.Model;
 
 import java.util.List;
 
@@ -15,11 +15,6 @@ public class MultipleChoiceQuestion implements Question {
         this.options = options;
         this.score = score;
     }
-
-
-
-
-
 
 
     @Override

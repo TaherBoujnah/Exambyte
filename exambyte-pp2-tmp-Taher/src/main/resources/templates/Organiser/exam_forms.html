@@ -6,43 +6,55 @@
     <link rel="stylesheet" href="/StyleSheet.css">
 </head>
 <body>
-<h1>Fill in Questions</h1>
-<form th:action="@{/Organiser/saveExam}" method="post">
-    <div th:each="i : ${#numbers.sequence(1, numberOfTextQuestions)}">
-        <h2>Text Question <span th:text="${i}"></span></h2>
-        <label for="textQuestion${i}">Question:</label>
-        <input type="text" id="textQuestion${i}" name="textQuestions" required>
+<div class="container">
+    <h1>Create Exam</h1>
+    <form th:action="@{/Organiser/saveExam}" method="post">
+        <!-- Text Questions -->
+        <div class="question-section">
+            <h2>Text Questions</h2>
+            <div th:each="i : ${#numbers.sequence(1, numberOfTextQuestions)}" class="question">
+                <label for="textQuestion${i}">Question <span th:text="${i}"></span>:</label>
+                <input type="text" id="textQuestion${i}" name="textQuestions" required>
 
-        <label for="sampleAnswer${i}">Sample Answer:</label>
-        <input type="text" id="sampleAnswer${i}" name="sampleAnswers" required>
-        <label for="textQuestionScore${i}">Correct Option (Index):</label>
-        <input type="number" id="textQuestionScore${i}" name="textQuestionScore" min="1" required>
-    </div>
+                <label for="sampleAnswer${i}">Sample Answer:</label>
+                <input type="text" id="sampleAnswer${i}" name="sampleAnswers" required>
 
-    <div th:each="i : ${#numbers.sequence(1, numberOfMultipleChoiceQuestions)}">
-        <h2>Multiple-Choice Question <span th:text="${i}"></span></h2>
-        <label for="mcQuestion${i}">Question:</label>
-        <input type="text" id="mcQuestion${i}" name="mcQuestions" required>
-        <label for="sampleAnswer${i}">Choices :</label>
-        <input type="text" id="possibleAnswerA${i}" name="sampleAnswers" required>
-        <label for="sampleAnswer${i}">Choices :</label>
-        <input type="text" id="possibleAnswerB${i}" name="sampleAnswers" required>
-        <label for="sampleAnswer${i}">Choices :</label>
-        <input type="text" id="possibleAnswer$C{i}" name="sampleAnswers" required>
-        <label for="sampleAnswer${i}">Choices :</label>
-        <input type="text" id="possibleAnswer$D{i}" name="sampleAnswers" required>
-        <label for="questionScore${i}">Question Score: (Index):</label>
-        <input type="number" id="questionScore${i}" name="questionScore" min="1" required>
+                <label for="textQuestionScore${i}">Score:</label>
+                <input type="number" id="textQuestionScore${i}" name="textQuestionScore" min="1" required>
+            </div>
+        </div>
 
+        <!-- Multiple Choice Questions -->
+        <div class="question-section">
+            <h2>Multiple-Choice Questions</h2>
+            <div th:each="i : ${#numbers.sequence(1, numberOfMultipleChoiceQuestions)}" class="question">
+                <label for="mcQuestion${i}">Question <span th:text="${i}"></span>:</label>
+                <input type="text" id="mcQuestion${i}" name="mcQuestions" required>
 
-        <label for="correctAnswer${i}">Correct Option (Index):</label>
-        <input type="number" id="correctAnswer${i}" name="correctAnswers" min="1" max="4" required>
-    </div>
+                <div class="choices">
+                    <label for="possibleAnswerA${i}">Choice A:</label>
+                    <input type="text" id="possibleAnswerA${i}" name="sampleAnswers" required>
 
-    <button type="submit">Save Exam</button>
-</form>
+                    <label for="possibleAnswerB${i}">Choice B:</label>
+                    <input type="text" id="possibleAnswerB${i}" name="sampleAnswers" required>
+
+                    <label for="possibleAnswerC${i}">Choice C:</label>
+                    <input type="text" id="possibleAnswerC${i}" name="sampleAnswers" required>
+
+                    <label for="possibleAnswerD${i}">Choice D:</label>
+                    <input type="text" id="possibleAnswerD${i}" name="sampleAnswers" required>
+                </div>
+
+                <label for="questionScore${i}">Question Score (Index):</label>
+                <input type="number" id="questionScore${i}" name="questionScore" min="1" required>
+
+                <label for="correctAnswer${i}">Correct Option (Index):</label>
+                <input type="number" id="correctAnswer${i}" name="correctAnswers" min="1" max="4" required>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Save Exam</button>
+    </form>
+</div>
 </body>
-
-
-
 </html>

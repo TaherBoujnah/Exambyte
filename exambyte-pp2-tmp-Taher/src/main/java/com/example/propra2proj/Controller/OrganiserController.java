@@ -1,15 +1,17 @@
 package com.example.propra2proj.Controller;
 
-import com.example.propra2proj.MultipleChoiceQuestion;
-import com.example.propra2proj.Question;
-import com.example.propra2proj.Test_Exam;
-import com.example.propra2proj.Text_Question;
+import com.example.propra2proj.Model.*;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +22,7 @@ public class OrganiserController {
     private int numberOfMultipleChoiceQuestions;
 
     @PostMapping("/Organiser/step1")
-    public String step1(
-            @RequestParam int numberOfTextQuestions,
+    public String step1(@RequestParam int numberOfTextQuestions,
             @RequestParam int numberOfMultipleChoiceQuestions,
             Model model) {
         this.numberOfTextQuestions = numberOfTextQuestions;
@@ -38,9 +39,9 @@ public class OrganiserController {
             @RequestParam(value = "mcQuestions", required = false) List<String> mcQuestions,
             @RequestParam(value = "options", required = false) List<List<String>> options,
             @RequestParam(value = "correctAnswers", required = false) List<Integer> correctAnswers
-            ,@RequestParam(value="textQuestionScore", required = false) List< Integer> textQuestionScore,
+            , @RequestParam(value="textQuestionScore", required = false) List< Integer> textQuestionScore,
             @RequestParam (value="questionScore", required = false) List<Integer> questionScore,
-            Model model) {
+            Model model, RedirectAttributes redirectAttributes) {
         List<Question> questions = new ArrayList<>();
         int totalScoreMultipleChoice=0;
         int totalScoreText=0;
@@ -63,12 +64,10 @@ public class OrganiserController {
             }
         }
 
-        Test_Exam testExam = new Test_Exam(
-                numberOfTextQuestions + numberOfMultipleChoiceQuestions,
-                questions, totalScoreMultipleChoice+totalScoreText
-        );
 
-        System.out.println("Test Created: " + testExam);
+
+        
+        redirectAttributes.addFlashAttribute("message", "Exam saved successfully!");
 
         return "redirect:/Organiser/organiser_dashboard";
     }
@@ -84,9 +83,12 @@ public class OrganiserController {
         model.addAttribute("numberOfMultipleChoiceQuestions", numberOfMultipleChoiceQuestions);
         return "Organiser/exam_forms";
     }
-
-
-
-
+    @GetMapping("/Organiser/organiser_dashboard")
+    @Secured("ROLE_ORGANISER")
+    public String CorrectorDashboard(OAuth2AuthenticationToken auth, Model model) {
+        model.addAttribute("name", auth.getName());
+        return "/Organiser/organiser_dashboard";
+    }
 }
+
 

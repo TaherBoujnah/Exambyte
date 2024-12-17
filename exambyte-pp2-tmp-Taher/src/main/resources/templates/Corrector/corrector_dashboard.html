@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer Dashboard</title>
+    <link rel="stylesheet" href="/StyleSheet.css">
 </head>
 <body>
+<div class="navbar">
+    <a href="/Organiser/create_exams">Create Exams</a>
+    <a href="/Organiser/old_exams">Old Exams</a>
+    <a href ="/Organiser/logout">Logout</a>
+</div>
+<div class="content">
+    <h1>Welcome to Your Dashboard, <span th:text="${name}"> </span> </h1>
+</div>
+
+<div class="cards-container">
+    <div class="card">
+        <h2>New Exams </h2>
+        <p>correct new uploaded exams  </p>
+        <a href="/Corrector/NewUploadedExams" class="button">correct Exams</a>
+    </div>
+
+    <div class="card">
+        <h2>Corrected Exams</h2>
+        <p>Review old corrected exam </p>
+        <a href="/Corrector/OldCorrectedExams" class="button">View Old Exams</a>
+    </div>
+
+    <div class="card">
+        <h2>Logout</h2>
+        <p>Log out from your account securely.</p>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+
+</div>
+
 
 </body>
 </html>

@@ -8,9 +8,9 @@
 </head>
 <body>
  <div class="navbar">
-     <a href="organiser_dashboard">Organiser Dashboard</a>
-     <a href="create_exams">Create Exams</a>
-     <a href="old_exams">Old Exams</a>
+     <a href=<a href="/Organiser/{{username}}/dashboard">Dashboard</a>
+     <a href="@{/Organiser/create_exams}">Create Exams</a>
+     <a href="@{/Organiser/old_exams}">Old Exams</a>
       <a href ="/logout">Logout</a>
  </div>
 <div class="content">
@@ -21,19 +21,19 @@
      <div class="card">
          <h2>Create Exams</h2>
          <p>Create and modify Exams.</p>
-         <a href="create_exams" class="button">Create Exams</a>
+         <a href="@{/Organiser/create_exams}" class="button">Create Exams</a>
      </div>
 
      <div class="card">
          <h2>Old Exams</h2>
          <p>Review your completed exams and scores.</p>
-         <a href="old_exams" class="button">View Old Exams</a>
+         <a href="@{/Organiser/old_exams}" class="button">View Old Exams</a>
      </div>
 
      <div class="card">
          <h2>Logout</h2>
          <p>Log out from your account securely.</p>
-         <a href="/logout" class="button">Logout</a>
+         <a href="@{/logout}" class="button">Logout</a>
      </div>
 
  </div>
